@@ -15,6 +15,11 @@ public class Main {
         System.out.println(isPrimeAll(new int[]{2, 3, 5, 7}));
         System.out.println(isPrimeAll(new int[]{2, 3, 5, 6}));
         System.out.println(isPrimeAll(new int[]{11, 7, 13, 23}));
+        System.out.println("___________________________________________");
+        System.out.println(findMissingLetter(new char[]{'A','B','D'}));
+//        System.out.println(findMissingLetter(new char[]{'f','e','c'}));
+        System.out.println("___________________________________________");
+        
     }
 
     //Нужно было написать код, который будет считать используя слова
@@ -155,5 +160,21 @@ public class Main {
             }
         }
         return true;
+    }
+
+    //Дан массив с последовательными буквами английского алфавита.
+    //Одна буква в последовательности пропущена.
+    //Необходимо вернуть пропущенную букву, учитывая регистр букв в подаваемом массиве
+    public static char findMissingLetter(char[] letters) {
+        // Находим индекс первой буквы в массиве
+        char missed = '0';
+        for (int i=0; i < letters.length - 1; i++) {
+            if (letters[i+1] - letters[i] != 1) {
+
+                missed = (char) (letters[i] + 1);
+            }
+
+        }
+        return missed;
     }
 }
