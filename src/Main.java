@@ -6,6 +6,11 @@ public class Main {
         System.out.println(calc("one plus one"));
         System.out.println(calc("twenty one plus one"));
         System.out.println(calc("ninety one plus fifty"));
+        System.out.println("___________________________________________");
+        System.out.println(code(3));
+        System.out.println(code(9));
+        System.out.println(code(17));
+        System.out.println(code(24));
     }
 
     //Нужно было написать код, который будет считать используя слова
@@ -114,5 +119,21 @@ public class Main {
 
         }
         return fin.replaceFirst(Character.toString(fin.charAt(0)),Character.toString(fin.charAt(0)).toUpperCase()).trim();
+    }
+
+    //Степень двойки и остаток
+    public static int code(int num){
+        int st = 0;
+        while (num > Math.pow(2,st+1)){
+            st++;
+        }
+        int ost = (int) (num-Math.pow(2,st));
+        int fin = 0;
+        while (st!=0){
+            fin+=2;
+            fin*=10;
+            st--;
+        }
+        return fin+ost;
     }
 }
