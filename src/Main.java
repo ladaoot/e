@@ -11,6 +11,10 @@ public class Main {
         System.out.println(code(9));
         System.out.println(code(17));
         System.out.println(code(24));
+        System.out.println("___________________________________________");
+        System.out.println(isPrimeAll(new int[]{2, 3, 5, 7}));
+        System.out.println(isPrimeAll(new int[]{2, 3, 5, 6}));
+        System.out.println(isPrimeAll(new int[]{11, 7, 13, 23}));
     }
 
     //Нужно было написать код, который будет считать используя слова
@@ -115,25 +119,41 @@ public class Main {
                     }
                 }
             }
-            ans = ans/10 *10;
+            ans = ans / 10 * 10;
 
         }
-        return fin.replaceFirst(Character.toString(fin.charAt(0)),Character.toString(fin.charAt(0)).toUpperCase()).trim();
+        return fin.replaceFirst(Character.toString(fin.charAt(0)), Character.toString(fin.charAt(0)).toUpperCase()).trim();
     }
 
     //Степень двойки и остаток
-    public static int code(int num){
+    public static int code(int num) {
         int st = 0;
-        while (num > Math.pow(2,st+1)){
+        while (num > Math.pow(2, st + 1)) {
             st++;
         }
-        int ost = (int) (num-Math.pow(2,st));
+        int ost = (int) (num - Math.pow(2, st));
         int fin = 0;
-        while (st!=0){
-            fin+=2;
-            fin*=10;
+        while (st != 0) {
+            fin += 2;
+            fin *= 10;
             st--;
         }
-        return fin+ost;
+        return fin + ost;
+    }
+
+    //Дан массив чисел, нужно вернуть true, если все числа массива простые, false, в обратном случае
+    //Примечание- 1 не является простым числом
+    public static boolean isPrimeAll(int[] nums) {
+        for (int n : nums) {
+            if (n == 1) {
+                return false;
+            }
+            for (int i = 2; i < n / 2; i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
